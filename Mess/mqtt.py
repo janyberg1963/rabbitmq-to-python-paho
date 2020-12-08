@@ -40,13 +40,17 @@ def ReadMqtt():
             global theValue
             theValue=A_mess
 
+           
+
         client.on_message=on_message
         
             
 
-        time.sleep(10)
+        time.sleep(1)
 
         client.loop_stop()
         client.disconnect()
+        print (type(theValue))
+       
         print (theValue)
         return (theValue)

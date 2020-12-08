@@ -10,5 +10,8 @@ def index(request):
     
     print ('return from function')
     print (mq_mess) 
-    stuff_for_frontend = {'mq_mess': mq_mess}
+    mq_mess2 = mq_mess.decode('utf-8')
+      
+    stuff_for_frontend = {'mq_mess2': mq_mess2}
+    
     return render(request,'Mess/index.html',stuff_for_frontend)

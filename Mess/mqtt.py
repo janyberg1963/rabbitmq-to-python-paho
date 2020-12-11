@@ -1,10 +1,24 @@
 import paho.mqtt.client as mqtt
 
 import time
+class Mqmess:
+    def __init__(self,Tname,Tvalue):
+        self.Tname = Tname
+        self.Tvalue = Tvalue
 
+    def G_data(self):
+        return f'{self.Tname},{self.Tvalue}'
+
+
+
+
+
+theList=['topic']
+values=[]
+dmess=Mqmess('topic','tvalues')
 
 def ReadMqtt():
-        
+          
         broker='127.0.0.1'
         client=mqtt.Client("my_mqtt")
 
@@ -26,19 +40,47 @@ def ReadMqtt():
             print("in wait loop")
             time.sleep(1)
             print("in main loop")
-        client.subscribe("sensors/drone01/altitude")
+        client.subscribe([("sensors/drone01/altitude",0),('sensors/drone01/Airspeed',0)])
+
+       
+
+
+
+       
+        
+
+
         def on_message(client,userdata,msg):
-            print(msg.topic)
-            print(msg.payload)
+           # print(msg.topic)
+           # print(msg.payload)
             A_mess = msg.payload
-            Payload(A_mess)
+            ATopic=msg.topic
+            
+
+            Payload(A_mess,ATopic)
                     
 
-        def Payload(A_mess):
+        def Payload(A_mess,ATopic):
+            
             print('in the function')
             print(A_mess)
+            print(ATopic)
+                      
             global theValue
+            global theTopic
+            global values
+            
+            global Mqmess
+           
+            theTopic=ATopic
             theValue=A_mess
+               
+            b=Mqmess(theTopic,theValue)  
+            c=(b.G_data())
+            print(c)
+            values.append(c)
+            
+            #print(theList)
 
            
 
@@ -50,7 +92,18 @@ def ReadMqtt():
 
         client.loop_stop()
         client.disconnect()
-        print (type(theValue))
+        #print(messages)
+        #print (theTopic)
+
        
-        print (theValue)
-        return (theValue)
+
+              
+
+       
+        
+       
+
+        #print(theList)
+        print(values)
+        #print (theValue)
+        return (values)

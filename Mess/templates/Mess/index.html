@@ -5,13 +5,16 @@
 
 {% block content %}
 
+
+{% for values in mq_values %}
 <div class="post">
     <div class ="date">
-            
-           <p> <h1>Mqtt Message:{{ mq_mess2 }} </h1></p>
+            <p> <h1>Mqtt Topic:{{values}} </h1></p>
+           
     </div>
 </div>
 
+{% endfor %}
 
 
 {% endblock %}

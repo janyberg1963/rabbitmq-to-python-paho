@@ -25,18 +25,20 @@ while not client.connected_flag:
      print("in wait loop")
      time.sleep(1)
      print("in main loop")
-client.subscribe("sensors/drone01/altitude")
+client.subscribe([("sensors/drone01/altitude",0),('sensors/drone01/Airspeed',0)])
 def on_message(client,userdata,msg):
      print(msg.topic)
      print(msg.payload)
      A_mess = msg.payload
-     Payload(A_mess)
+     Atopic = msg.topic
+     Payload(A_mess, Atopic)
               
 
-def Payload(A_mess):
+def Payload(A_mess, Atopic):
      print('in the function')
+     print(Atopic)
      print(A_mess)
-     return(A_mess)
+     return(A_mess,Atopic)
 
 client.on_message=on_message
      
@@ -45,4 +47,5 @@ time.sleep(10)
 
 client.loop_stop()
 client.disconnect()
+
 

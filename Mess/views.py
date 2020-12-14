@@ -7,8 +7,7 @@ from . mqtt import ReadMqtt
 
 def index(request):
     
-    mq_mess= ''
-    mq_topic=''
+    
     
     #values=[]
      

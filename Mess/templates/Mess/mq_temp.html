@@ -1,0 +1,20 @@
+{% extends "Mess/base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% for temp in view_temp %}
+<div class="post">
+    <div class ="date">
+            <p> <h2>Mqtt Topic:</h2><h1>{{temp}} </h1></p>
+           
+    </div>
+</div>
+
+
+{% endfor %}
+
+
+{% endblock %}

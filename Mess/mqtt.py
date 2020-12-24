@@ -54,7 +54,8 @@ def ReadMqtt():
         client.subscribe([("sensors/drone01/altitude",0),('sensors/drone01/Airspeed',0),('sensors/drone01/RPM',0)])
 
              
-        
+    
+
 
         #called when new message received
 
@@ -127,14 +128,10 @@ def ReadMqtt():
 
             return(DefineFrontend.Value)
 
-
-           
-           
-           
+   
+                  
             
-
-            
-            
+                    
            
            
 

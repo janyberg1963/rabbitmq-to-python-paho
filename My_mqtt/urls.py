@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Mess.urls'))
+    path('', include('Mess.urls')),
+    path('rasp/', include('Mess.urls'))
 ]
 
